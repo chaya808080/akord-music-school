@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Models\BLStudentIsAbsent.cs~RFb38d62a.TMP" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Dal\Dal.csproj" />
   </ItemGroup>
 

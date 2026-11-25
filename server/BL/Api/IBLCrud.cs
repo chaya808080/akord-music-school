@@ -1,17 +1,11 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace BL.Api;
 
-namespace BL.Api
+/// <summary>Async CRUD contract of the business layer. Every write goes through validation.</summary>
+public interface IBLCrud<T> where T : class
 {
-    public interface IBLCrud<T>
-    {
-        void Create(T item);
-        void Update(T item);
-        void Delete(T item);
-        List<T> Read();
-    }
+    Task<List<T>> GetAllAsync();
+    Task<T> GetByIdAsync(int id);
+    Task<T> CreateAsync(T item);
+    Task<T> UpdateAsync(int id, T item);
+    Task DeleteAsync(int id);
 }

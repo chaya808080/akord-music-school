@@ -1,75 +1,23 @@
-﻿using BL.Api;
-using BL.Servies;
-using ConsoleApp1.Models;
-
-
-//using BL.Servies;
-using DAL;
+using BL.Services;
 using DAL.Api;
-using DAL.Servies;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+namespace BL;
 
-namespace BL
+/// <summary>Facade over all business services. Registered per request, on top of the request's IDal.</summary>
+public class BLManager(IDal dal)
 {
-
-    public class BLManager 
-    {
-        public IBLStudents Students { get; }
-        public IBLFamily Family { get; }
-        public IBLTeachers Teachers { get; }
-        public IBLAnnualHoursSystem AnnualHoursSystem { get; }
-        public IBLCourse Course { get; }
-        public IBLEndStudent EndStudent { get; }
-        public IBLEndTeacher EndTeacher { get; }
-        public IBLReason Reason { get; }
-        public IBLStudentIsAbsent StudentIsAbsent { get; }
-        public IBLStudentsOfCourses StudentsOfCourses { get; }
-        public IBLStudentWaiting StudentWaiting { get; }
-        public IBLteacherIsAbsent teacherIsAbsent { get; }
-        public IBLTeachersOfCourses TeachersOfCourses { get; }
-
-        public BLManager()
-        {
-            ServiceCollection services = new ServiceCollection();
-
-            services.AddSingleton<IDal, DalManager>();
-            services.AddSingleton<IBLStudents,BLStudentServies>();
-            services.AddSingleton<IBLFamily, BLFamilyService>();
-            services.AddSingleton<IBLAnnualHoursSystem, BLAnnualHoursSystemService>();
-            services.AddSingleton<IBLCourse, BLCourseService>();
-            services.AddSingleton<IBLEndStudent, BLEndStudentService>();
-            services.AddSingleton<IBLEndTeacher, BLEndTeacherService>();
-            services.AddSingleton<IBLReason, BLReasonService>();
-            services.AddSingleton<IBLStudentIsAbsent, BLStudentIsAbsentService>();
-            services.AddSingleton<IBLStudentsOfCourses, BLStudentsOfCourseService>();
-            services.AddSingleton<IBLStudentWaiting, BLStudentWqaitingService>();
-            services.AddSingleton<IBLteacherIsAbsent, BLTeacherIsAbsentService>();
-            services.AddSingleton<IBLTeachersOfCourses, BLTeachersOfCourseService>();
-    
-
-            ServiceProvider serviceProvider = services.BuildServiceProvider();
-            // הזרקה אוטמטית באמצעות מנגנון ההזרקה של C#
-            Students = serviceProvider.GetRequiredService<IBLStudents>();
-            Family = serviceProvider.GetRequiredService<IBLFamily>();
-            //Teachers = serviceProvider.GetRequiredService<IBLTeachers>();
-            AnnualHoursSystem = serviceProvider.GetRequiredService<IBLAnnualHoursSystem>();
-            Course = serviceProvider.GetRequiredService<IBLCourse>();
-            EndStudent = serviceProvider.GetRequiredService<IBLEndStudent>();
-            EndTeacher = serviceProvider.GetRequiredService<IBLEndTeacher>();
-            Reason = serviceProvider.GetRequiredService<IBLReason>();
-            StudentIsAbsent = serviceProvider.GetRequiredService<IBLStudentIsAbsent>();
-            StudentsOfCourses = serviceProvider.GetRequiredService<IBLStudentsOfCourses>();
-            StudentWaiting = serviceProvider.GetRequiredService<IBLStudentWaiting>();
-            teacherIsAbsent = serviceProvider.GetRequiredService<IBLteacherIsAbsent>();
-            TeachersOfCourses = serviceProvider.GetRequiredService<IBLTeachersOfCourses>();
-
-        }
-    }
+    public BLStudentService Students { get; } = new(dal);
+    public BLFamilyService Families { get; } = new(dal);
+    public BLTeacherService Teachers { get; } = new(dal);
+    public BLCourseService Courses { get; } = new(dal);
+    public BLStudentsOfCourseService Enrollments { get; } = new(dal);
+    public BLTeachersOfCourseService TeacherCourses { get; } = new(dal);
+    public BLAnnualHoursSystemService Lessons { get; } = new(dal);
+    public BLStudentIsAbsentService StudentAbsences { get; } = new(dal);
+    public BLTeacherIsAbsentService TeacherAbsences { get; } = new(dal);
+    public BLStudentWaitingService WaitingList { get; } = new(dal);
+    public BLEndStudentService StudentEndings { get; } = new(dal);
+    public BLEndTeacherService TeacherEndings { get; } = new(dal);
+    public BLReasonService Reasons { get; } = new(dal);
+    public BLStatsService Stats { get; } = new(dal);
 }
-

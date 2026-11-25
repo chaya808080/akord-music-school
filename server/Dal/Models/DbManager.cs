@@ -6,10 +6,6 @@ namespace DAL.Models;
 
 public partial class DbManager : DbContext
 {
-    public DbManager()
-    {
-    }
-
     public DbManager(DbContextOptions<DbManager> options)
         : base(options)
     {
@@ -40,10 +36,6 @@ public partial class DbManager : DbContext
     public virtual DbSet<TeacherIsAbsent> TeacherIsAbsents { get; set; }
 
     public virtual DbSet<TeachersOfCourse> TeachersOfCourses { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename='A:\\c#\\ProjectEnd\\ConsoleApp1\\ConsoleApp1\\dataBase\\dataBase.mdf';Integrated Security=True;Connect Timeout=30;Encrypt=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -85,8 +77,6 @@ public partial class DbManager : DbContext
 
             entity.Property(e => e.CodeOfCourse).HasColumnName("codeOfCourse");
             entity.Property(e => e.DescriptionOfCourse)
-                .IsUnicode(false)
-                .HasDefaultValue("???? ????? ?????? ??????")
                 .HasColumnName("descriptionOfCourse");
             entity.Property(e => e.DuretionTimeOfCourse)
                 .HasDefaultValue(30)

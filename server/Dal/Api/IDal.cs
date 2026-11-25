@@ -1,27 +1,19 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace DAL.Api;
 
-namespace DAL.Api
+/// <summary>Single entry point to all repositories (one instance per request).</summary>
+public interface IDal
 {
-    public interface IDal
-    {
-         IAnnualHoursSystem AnnualHoursSystem { get; }
-         ICourse course { get; }
-        IEndStudent endStudent { get; }
-        IEndTeacher endTeacher { get; }
-        IFamily Family { get; }
-        IReason Reason { get; }
-        IStudentIsAbsent studentIsAbsent { get; }
-        IStudents students { get; }
-        IStudentsOfCourses StudentsOfCourses { get; }
-        IStudentWaiting studentWaiting { get; }
-        IteacherIsAbsent iteacherIsAbsent { get; }
-        ITeachers teachers { get; }
-        ITeachersOfCourses teachersOfCourses { get; }
-
-    }
+    IStudents Students { get; }
+    IFamilies Families { get; }
+    ITeachers Teachers { get; }
+    ICourses Courses { get; }
+    IStudentsOfCourses StudentsOfCourses { get; }
+    ITeachersOfCourses TeachersOfCourses { get; }
+    IAnnualHoursSystem AnnualHoursSystem { get; }
+    IStudentIsAbsent StudentAbsences { get; }
+    ITeacherIsAbsent TeacherAbsences { get; }
+    IStudentWaiting StudentWaitings { get; }
+    IEndStudent EndStudents { get; }
+    IEndTeacher EndTeachers { get; }
+    IReasons Reasons { get; }
 }

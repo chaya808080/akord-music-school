@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{024A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{D915F4D4-93C6-A3E7-09D8-4385B9DC5944}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akord.Tests", "Akord.Tests\Akord.Tests.csproj", "{CADBA266-5596-4603-A410-18B273B55DD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D915F4D4-93C6-A3E7-09D8-4385B9DC5944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D915F4D4-93C6-A3E7-09D8-4385B9DC5944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D915F4D4-93C6-A3E7-09D8-4385B9DC5944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CADBA266-5596-4603-A410-18B273B55DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CADBA266-5596-4603-A410-18B273B55DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CADBA266-5596-4603-A410-18B273B55DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CADBA266-5596-4603-A410-18B273B55DD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConsoleApp1.Models;
+namespace BL.Models;
 
 public class BLStudentIsAbsent
 {
